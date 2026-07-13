@@ -1,0 +1,28 @@
+:root {
+  --color-dark: #414833;
+  --color-olive: #737A5D;
+  --color-sage: #A4AC86;
+  --color-sand: #CCBFA3;
+  --color-cream: #EBE3D2;
+  --color-paper: #FFFDF8;
+  --color-white: #FFFFFF;
+  --color-danger: #8A3C3C;
+  --color-success: #506445;
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-script: "Marck Script", cursive;
+  --font-body: "Manrope", sans-serif;
+
+  --container: 1120px;
+  --container-narrow: 780px;
+  --radius-small: 16px;
+  --radius-medium: 24px;
+  --radius-large: 34px;
+
+  --shadow-soft: 0 18px 60px rgba(65, 72, 51, 0.14);
+  --shadow-strong: 0 28px 90px rgba(24, 28, 19, 0.22);
+
+  --transition-fast: 180ms ease;
+  --transition-normal: 420ms ease;
+  --transition-slow: 850ms cubic-bezier(.22, .61, .36, 1);
+}

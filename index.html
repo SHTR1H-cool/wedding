@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#414833">
+  <meta name="description" content="Свадебное приглашение Ахмеда и Динары">
+  <title>Ахмед & Динара — Свадебное приглашение</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIINfQ3ynhQ+8KnE6CuMZzgMZ4BTc8xvUoA=" crossorigin="">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin="" defer></script>
+
+  <script src="js/content.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+
+<body class="page-locked">
+  <noscript>
+    <div class="noscript">Для просмотра приглашения необходимо включить JavaScript.</div>
+  </noscript>
+
+  <!-- Обложка -->
+  <section class="cover" id="cover" aria-label="Обложка приглашения">
+    <div class="islamic-pattern" aria-hidden="true"></div>
+    <div class="cover-glow cover-glow-one" aria-hidden="true"></div>
+    <div class="cover-glow cover-glow-two" aria-hidden="true"></div>
+
+    <div class="cover-card">
+      <div class="crescent-wrap" aria-hidden="true">
+        <div class="crescent"></div>
+        <span class="crescent-star">✦</span>
+      </div>
+
+      <p class="cover-label" id="coverLabel">Свадебное приглашение</p>
+      <h1 class="cover-names" id="coverNames">Ахмед & Динара</h1>
+      <p class="cover-date" id="coverDate">31 · 12 · 2026</p>
+
+      <button class="button button-light" id="openInvitation" type="button">
+        Открыть приглашение
+      </button>
+    </div>
+  </section>
+
+  <main id="mainContent" class="main-content" aria-hidden="true">
+    <!-- Приглашение -->
+    <section class="section invitation-section">
+      <div class="container container-narrow">
+        <article class="invitation-card reveal">
+          <p class="eyebrow" id="invitationEyebrow">Дорогие родные и близкие</p>
+          <h2 class="section-title" id="invitationTitle">Приглашаем вас</h2>
+          <div class="ornament" aria-hidden="true"><span></span></div>
+
+          <p class="invitation-text" id="invitationText"></p>
+
+          <p class="guest-greeting is-hidden" id="guestGreeting"></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Дата и таймер -->
+    <section class="section date-section">
+      <div class="date-pattern" aria-hidden="true"></div>
+
+      <div class="container">
+        <p class="eyebrow eyebrow-light reveal">Сохраните эту дату</p>
+        <h2 class="section-title section-title-light reveal">День нашей свадьбы</h2>
+
+        <div class="date-display reveal">
+          <span class="date-day" id="weddingDay">31</span>
+          <span class="date-month" id="weddingMonthYear">Декабря 2026</span>
+        </div>
+
+        <div class="countdown reveal" aria-label="Обратный отсчёт до свадьбы">
+          <div class="countdown-card">
+            <strong id="days">00</strong>
+            <span>дней</span>
+          </div>
+          <div class="countdown-card">
+            <strong id="hours">00</strong>
+            <span>часов</span>
+          </div>
+          <div class="countdown-card">
+            <strong id="minutes">00</strong>
+            <span>минут</span>
+          </div>
+          <div class="countdown-card">
+            <strong id="seconds">00</strong>
+            <span>секунд</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Программа -->
+    <section class="section program-section">
+      <div class="container">
+        <p class="eyebrow reveal">План торжества</p>
+        <h2 class="section-title reveal">Программа дня</h2>
+        <div class="ornament reveal" aria-hidden="true"><span></span></div>
+
+        <div class="timeline" id="scheduleList"></div>
+      </div>
+    </section>
+
+    <!-- Место -->
+    <section class="section location-section">
+      <div class="container">
+        <p class="eyebrow reveal">Место проведения</p>
+        <h2 class="section-title reveal">Будем ждать вас здесь</h2>
+
+        <div class="location-layout">
+          <article class="location-card">
+            <span class="location-icon" aria-hidden="true">⌖</span>
+            <h3 id="locationName">Кафе «Беспокойный»</h3>
+            <p id="locationAddress">Средняя Елюзань, ул. Складская, 30</p>
+
+            <a class="button button-light" id="routeButton"
+               href="https://yandex.ru/maps/-/CTBPUW3G"
+               target="_blank" rel="noopener noreferrer">
+              Построить маршрут
+            </a>
+          </article>
+
+          <div class="map-card">
+            <div id="map" aria-label="Карта места проведения"></div>
+            <div class="map-error is-hidden" id="mapError">
+              Не удалось загрузить карту. Используйте кнопку «Построить маршрут».
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Анкета -->
+    <section class="section rsvp-section">
+      <div class="container">
+        <p class="eyebrow reveal">Подтвердите присутствие</p>
+        <h2 class="section-title reveal">Анкета гостя</h2>
+        <p class="section-subtitle reveal" id="rsvpDescription">
+          Пожалуйста, заполните анкету, чтобы мы могли подготовиться к встрече.
+        </p>
+
+        <form class="rsvp-form reveal" id="guestForm" novalidate>
+          <div class="form-field">
+            <label for="guestName">Имя и фамилия</label>
+            <input id="guestName" name="name" type="text"
+                   autocomplete="name" placeholder="Введите ваше имя" required>
+            <span class="field-error" data-error-for="name"></span>
+          </div>
+
+          <fieldset class="form-field form-fieldset">
+            <legend>Сможете ли вы присутствовать?</legend>
+
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="attendance" value="Да" required>
+                <span>Да, обязательно</span>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="attendance" value="Нет">
+                <span>К сожалению, нет</span>
+              </label>
+            </div>
+
+            <span class="field-error" data-error-for="attendance"></span>
+          </fieldset>
+
+          <!-- <div class="form-field" id="guestCountField">
+            <label for="guestCount">Количество гостей</label>
+            <select id="guestCount" name="guests" required>
+              <option value="">Выберите количество</option>
+              <option value="1">1 гость</option>
+              <option value="2">2 гостя</option>
+              <option value="3">3 гостя</option>
+              <option value="4">4 гостя</option>
+              <option value="5">5 гостей</option>
+            </select>
+            <span class="field-error" data-error-for="guests"></span>
+          </div> -->
+
+          <div class="form-field">
+            <label for="guestMessage">Комментарий или пожелание</label>
+            <textarea id="guestMessage" name="message"
+                      placeholder="Напишите несколько тёплых слов"></textarea>
+          </div>
+
+          <input type="hidden" id="guestQueryValue" name="guestFromLink" value="">
+          <input type="hidden" id="submittedAt" name="submittedAt" value="">
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+
+          <button class="button button-dark submit-button" id="submitButton" type="submit">
+            <span class="submit-button-text">Отправить ответ</span>
+            <span class="submit-spinner" aria-hidden="true"></span>
+          </button>
+
+          <p class="form-note" id="formNote">
+            Ответ будет записан в Google Таблицу организаторов.
+          </p>
+
+          <div class="form-status is-hidden" id="formStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-pattern" aria-hidden="true"></div>
+    <p class="footer-names" id="footerNames">Ахмед & Динара</p>
+    <p id="footerText">С любовью ждём встречи с вами</p>
+  </footer>
+</body>
+</html>
