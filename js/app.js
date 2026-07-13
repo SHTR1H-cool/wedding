@@ -235,24 +235,6 @@
     const submitButton = $("#submitButton");
     const formStatus = $("#formStatus");
     const attendanceInputs = $$('input[name="attendance"]');
-    const guestCountField = $("#guestCountField");
-    const guestCount = $("#guestCount");
-
-    attendanceInputs.forEach(input => {
-      input.addEventListener("change", () => {
-        const willAttend = input.value === "Да" && input.checked;
-        const willNotAttend = input.value === "Нет" && input.checked;
-
-        if (willNotAttend) {
-          guestCount.value = "1";
-          guestCount.required = false;
-          guestCountField.classList.add("is-hidden");
-        } else if (willAttend) {
-          guestCount.required = true;
-          guestCountField.classList.remove("is-hidden");
-        }
-      });
-    });
 
     form.addEventListener("submit", async event => {
       event.preventDefault();
@@ -297,9 +279,7 @@
         if (guest) {
           $("#guestName").value = guest;
         }
-
-        guestCountField.classList.remove("is-hidden");
-        guestCount.required = true;
+        
       } catch (error) {
         console.error("Ошибка отправки формы:", error);
         showStatus(content.form.errorMessage, "error");
@@ -312,7 +292,6 @@
       let valid = true;
       const name = $("#guestName");
       const attendance = $('input[name="attendance"]:checked');
-      const guests = $("#guestCount");
 
       if (!name.value.trim()) {
         setFieldError("name", "Введите имя и фамилию.");
@@ -322,12 +301,6 @@
 
       if (!attendance) {
         setFieldError("attendance", "Выберите вариант ответа.");
-        valid = false;
-      }
-
-      if (attendance?.value === "Да" && !guests.value) {
-        setFieldError("guests", "Укажите количество гостей.");
-        guests.classList.add("is-invalid");
         valid = false;
       }
 
