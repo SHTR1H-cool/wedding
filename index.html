@@ -11,20 +11,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
 
-  <link 
-    rel="stylesheet" 
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  >
-
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-          crossorigin="" defer></script>
 
   <script src="js/content.js" defer></script>
   <script src="js/app.js" defer></script>
@@ -122,28 +113,42 @@
     <section class="section location-section">
       <div class="container">
         <p class="eyebrow reveal">Место проведения</p>
-        <h2 class="section-title reveal">Будем ждать вас здесь</h2>
-
-        <div class="location-layout">
-          <article class="location-card">
+    
+        <h2 class="section-title reveal">
+          Будем ждать вас здесь
+        </h2>
+    
+        <article class="location-card location-card-wide reveal">
+          <div class="location-card-content">
             <span class="location-icon" aria-hidden="true">⌖</span>
-            <h3 id="locationName">Кафе «Беспокойный»</h3>
-            <p id="locationAddress">Средняя Елюзань, ул. Складская, 30</p>
-
-            <a class="button button-light" id="routeButton"
-               href="https://yandex.ru/maps/-/CTBPUW3G"
-               target="_blank" rel="noopener noreferrer">
+    
+            <p class="location-label">Место торжества</p>
+    
+            <h3 id="locationName">
+              Кафе «Беспокойный»
+            </h3>
+    
+            <p class="location-address" id="locationAddress">
+              Средняя Елюзань, ул. Складская, 30
+            </p>
+    
+            <a
+              class="button button-light location-route-button"
+              id="routeButton"
+              href="https://yandex.ru/maps/-/CTBPUW3G"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Построить маршрут
             </a>
-          </article>
-
-          <div class="map-card">
-            <div id="map" aria-label="Карта места проведения"></div>
-            <div class="map-error is-hidden" id="mapError">
-              Не удалось загрузить карту. Используйте кнопку «Построить маршрут».
-            </div>
           </div>
-        </div>
+    
+          <div class="location-decoration" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </article>
       </div>
     </section>
 
