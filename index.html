@@ -195,11 +195,40 @@
             <span class="field-error" data-error-for="guests"></span>
           </div> -->
 
-          <div class="form-field">
+          <!-- <div class="form-field">
             <label for="guestMessage">Комментарий или пожелание</label>
             <textarea id="guestMessage" name="message"
                       placeholder="Напишите несколько тёплых слов"></textarea>
-          </div>
+          </div> -->
+
+          <fieldset
+            class="form-field form-fieldset is-hidden"
+            id="guestSideField"
+          >
+            <legend>С какой стороны вы приглашены?</legend>
+          
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input
+                  type="radio"
+                  name="guestSide"
+                  value="Со стороны жениха"
+                >
+                <span>Со стороны жениха</span>
+              </label>
+          
+              <label class="radio-card">
+                <input
+                  type="radio"
+                  name="guestSide"
+                  value="Со стороны невесты"
+                >
+                <span>Со стороны невесты</span>
+              </label>
+            </div>
+          
+            <span class="field-error" data-error-for="guestSide"></span>
+          </fieldset>
 
           <input type="hidden" id="guestQueryValue" name="guestFromLink" value="">
           <input type="hidden" id="submittedAt" name="submittedAt" value="">
