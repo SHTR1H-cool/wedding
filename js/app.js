@@ -20,7 +20,6 @@
     initializeCover();
     initializeRevealAnimations();
     initializeCountdown();
-    initializeMap();
     initializePersonalization();
     initializeForm();
   }
@@ -134,82 +133,6 @@
 
     update();
     window.setInterval(update, 1000);
-  }
-
-  function initializeMap() {
-    const mapElement = $("#map");
-    const errorElement = $("#mapError");
-
-    const latitude = Number(content.location.latitude);
-    const longitude = Number(content.location.longitude);
-
-    if (!window.L || !Number.isFinite(latitude) || !Number.isFinite(longitude)) {
-      mapElement.classList.add("is-hidden");
-      errorElement.classList.remove("is-hidden");
-      return;
-    }
-
-    try {
-      const map = L.map(mapElement, {
-        scrollWheelZoom: false,
-        zoomControl: true
-      }).setView([latitude, longitude], content.location.zoom || 16);
-
-      const refreshMap = () => {
-        window.setTimeout(() => {
-          map.invalidateSize(true);
-        }, 300);
-      };
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "© OpenStreetMap"
-      }).addTo(map);
-
-      const markerIcon = L.divIcon({
-        className: "custom-map-marker",
-        html: "",
-        iconSize: [38, 38],
-        iconAnchor: [19, 19],
-        popupAnchor: [0, -22]
-      });
-
-      L.marker([latitude, longitude], { icon: markerIcon })
-        .addTo(map)
-        .bindPopup(content.location.popupText)
-        .openPopup();
-
-      refreshMap();
-
-      window.addEventListener("resize", refreshMap);
-
-      document.getElementById("openInvitation")
-        ?.addEventListener("click", () => {
-          window.setTimeout(() => {
-            map.invalidateSize(true);
-          }, 500);
-        });
-
-      const mapResizeObserver = new ResizeObserver(() => {
-        map.invalidateSize(false);
-      });
-
-      mapResizeObserver.observe(mapElement);
-
-        window.setTimeout(() => {
-          map.invalidateSize();
-        }, 1000);
-
-        document.getElementById("openInvitation").addEventListener("click", () => {
-          window.setTimeout(() => {
-            map.invalidateSize();
-          }, 1000);
-        });
-    } catch (error) {
-      console.error("Ошибка инициализации карты:", error);
-      mapElement.classList.add("is-hidden");
-      errorElement.classList.remove("is-hidden");
-    }
   }
 
   function initializePersonalization() {
