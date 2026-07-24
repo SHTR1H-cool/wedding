@@ -1,50 +1,4 @@
 /* =========================================================
-   МЕСТОПОЛОЖЕНИЕ — НОУТБУКИ И ПК
-   ========================================================= */
-
-@media (min-width: 841px) {
-  .location-layout {
-    grid-template-columns: minmax(400px, 0.82fr) minmax(0, 1.18fr);
-    gap: 30px;
-    align-items: stretch;
-  }
-
-  .location-card,
-  .map-card {
-    height: 390px;
-    min-height: 390px;
-  }
-
-  .location-card {
-    padding: 44px 56px 48px;
-    justify-content: flex-start;
-  }
-
-  .location-icon {
-    margin-bottom: 18px;
-  }
-
-  .location-card h3 {
-    margin-bottom: 18px;
-  }
-
-  .location-card p {
-    margin-bottom: 24px;
-  }
-
-  .location-card .button {
-    margin-top: auto;
-    margin-bottom: 0;
-  }
-
-  #map {
-    height: 100%;
-    min-height: 390px;
-  }
-}
-
-
-/* =========================================================
    ПЛАНШЕТЫ
    ========================================================= */
 
@@ -53,33 +7,20 @@
     padding: 86px 0;
   }
 
-  .location-layout {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  /* Местоположение */
+
+  .location-card-wide {
+    min-height: 360px;
+    margin-top: 38px;
+    padding: 58px 42px;
   }
 
-  .location-card {
-    height: auto;
-    min-height: auto;
-    padding: 38px 30px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  .location-card-wide h3 {
+    font-size: clamp(2.8rem, 8vw, 4.2rem);
   }
 
-  .location-card p {
-    margin-bottom: 24px;
-  }
-
-  .map-card {
-    height: 320px;
-    min-height: 320px;
-  }
-
-  #map {
-    width: 100%;
-    height: 100%;
-    min-height: 320px;
+  .location-decoration span:nth-child(1) {
+    right: -190px;
   }
 }
 
@@ -94,6 +35,8 @@
     width: min(calc(100% - 32px), var(--container));
   }
 
+  /* Первый экран */
+
   .cover {
     padding: 16px;
   }
@@ -101,6 +44,8 @@
   .cover-card {
     padding-inline: 18px;
   }
+
+  /* Обратный отсчёт */
 
   .countdown {
     gap: 8px;
@@ -116,6 +61,8 @@
     letter-spacing: 0.08em;
   }
 
+  /* Программа мероприятия */
+
   .timeline::before {
     left: 8px;
   }
@@ -130,43 +77,67 @@
 
   .timeline-event:nth-child(odd)::before,
   .timeline-event:nth-child(even)::before {
-    left: 1px;
     right: auto;
+    left: 1px;
   }
+
+  /* Анкета */
 
   .radio-grid {
     grid-template-columns: 1fr;
   }
 
-  .location-layout {
-    margin-top: 32px;
-  }
+  /* Местоположение */
 
-  .location-card {
-    height: auto;
+  .location-card-wide {
     min-height: auto;
-    padding: 34px 24px;
-    border-radius: 28px;
+    margin-top: 32px;
+    padding: 48px 24px;
+    border-radius: 24px;
   }
 
-  .location-card h3 {
-    font-size: 2.3rem;
+  .location-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 18px;
+    font-size: 1.8rem;
   }
 
-  .location-card p {
-    font-size: 1rem;
-    line-height: 1.6;
+  .location-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
   }
 
-  .map-card {
-    height: 300px;
-    min-height: 300px;
-    border-radius: 28px;
+  .location-card-wide h3 {
+    margin-bottom: 16px;
+    font-size: clamp(2.5rem, 12vw, 3.7rem);
   }
 
-  #map {
-    height: 100%;
-    min-height: 300px;
+  .location-address {
+    margin-bottom: 28px;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .location-route-button {
+    width: 100%;
+    min-width: 0;
+    max-width: 340px;
+  }
+
+  .location-decoration span:nth-child(1) {
+    top: -220px;
+    right: -240px;
+  }
+
+  .location-decoration span:nth-child(2) {
+    right: -160px;
+    bottom: -240px;
+  }
+
+  .location-decoration span:nth-child(3) {
+    top: 90px;
+    left: -210px;
   }
 }
 
@@ -180,35 +151,35 @@
     padding: 74px 0;
   }
 
+  /* Первый экран */
+
   .cover-date {
     margin-top: 22px;
   }
+
+  /* Обратный отсчёт */
 
   .countdown-card strong {
     font-size: 2.1rem;
   }
 
-  .location-card {
-    height: auto;
-    min-height: auto;
-    padding: 30px 20px;
+  /* Местоположение */
+
+  .location-card-wide {
+    padding: 42px 20px;
+    border-radius: 20px;
   }
 
-  .location-card h3 {
-    font-size: 2rem;
+  .location-card-wide h3 {
+    font-size: clamp(2.35rem, 13vw, 3.2rem);
   }
 
-  .location-card p {
-    margin-bottom: 22px;
+  .location-address {
+    max-width: 270px;
   }
 
-  .map-card {
-    height: 280px;
-    min-height: 280px;
-  }
-
-  #map {
-    height: 100%;
-    min-height: 280px;
+  .location-route-button {
+    min-height: 52px;
+    padding-inline: 22px;
   }
 }
