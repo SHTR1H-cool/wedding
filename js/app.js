@@ -235,6 +235,28 @@
     const submitButton = $("#submitButton");
     const formStatus = $("#formStatus");
     const attendanceInputs = $$('input[name="attendance"]');
+    const guestSideField = $("#guestSideField");
+    const guestSideInputs = $$('input[name="guestSide"]');
+
+    attendanceInputs.forEach(input => {
+      input.addEventListener("change", () => {
+        const willAttend = input.value === "Да" && input.checked;
+    
+        guestSideField.classList.toggle("is-hidden", !willAttend);
+    
+        guestSideInputs.forEach(sideInput => {
+          sideInput.required = willAttend;
+    
+          if (!willAttend) {
+            sideInput.checked = false;
+          }
+        });
+    
+        if (!willAttend) {
+          setFieldError("guestSide", "");
+        }
+      });
+    });
 
     form.addEventListener("submit", async event => {
       event.preventDefault();
@@ -275,6 +297,12 @@
         showStatus(content.form.successMessage, "success");
         form.reset();
 
+        guestSideField.classList.add("is-hidden");
+
+        guestSideInputs.forEach(input => {
+          input.required = false;
+        });
+
         const guest = $("#guestQueryValue").value;
         if (guest) {
           $("#guestName").value = guest;
@@ -292,6 +320,7 @@
       let valid = true;
       const name = $("#guestName");
       const attendance = $('input[name="attendance"]:checked');
+      const guestSide = $('input[name="guestSide"]:checked');
 
       if (!name.value.trim()) {
         setFieldError("name", "Введите имя и фамилию.");
@@ -301,6 +330,11 @@
 
       if (!attendance) {
         setFieldError("attendance", "Выберите вариант ответа.");
+        valid = false;
+      }
+
+      if (attendance?.value === "Да" && !guestSide) {
+        setFieldError("guestSide", "Укажите, с какой стороны вы приглашены.");
         valid = false;
       }
 
