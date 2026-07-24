@@ -15,8 +15,7 @@ function doPost(e) {
       new Date(),
       data.name || "",
       data.attendance || "",
-      data.guests || "",
-      data.message || "",
+      data.guestSide || "",
       data.guestFromLink || "",
       data.submittedAt || ""
     ]);
@@ -48,15 +47,14 @@ function getOrCreateSheet() {
       "Дата получения",
       "Имя и фамилия",
       "Присутствие",
-      "Количество гостей",
-      "Комментарий",
+      "Сторона гостя",
       "Имя из персональной ссылки",
       "Дата отправки с сайта"
     ]);
 
     sheet.setFrozenRows(1);
-    sheet.getRange(1, 1, 1, 7).setFontWeight("bold");
-    sheet.autoResizeColumns(1, 7);
+    sheet.getRange(1, 1, 1, 6).setFontWeight("bold");
+    sheet.autoResizeColumns(1, 6);
   }
 
   return sheet;
