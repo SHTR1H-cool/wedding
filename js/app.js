@@ -48,14 +48,6 @@
     $("#formNote").textContent = content.form.note;
     $("#footerText").textContent = content.footer.text;
 
-    const scheduleList = $("#scheduleList");
-    scheduleList.innerHTML = content.schedule.map((item, index) => `
-      <article class="timeline-event reveal ${index % 2 === 0 ? "reveal-left" : "reveal-right"}">
-        <div class="timeline-time">${escapeHtml(item.time)}</div>
-        <h3>${escapeHtml(item.title)}</h3>
-        <p>${escapeHtml(item.description)}</p>
-      </article>
-    `).join("");
   }
 
   function initializeCover() {
