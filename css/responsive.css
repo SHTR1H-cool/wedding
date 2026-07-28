@@ -61,6 +61,19 @@
     letter-spacing: 0.08em;
   }
 
+   .wedding-start-time {
+     margin: -4px auto 32px;
+   }
+   
+   .wedding-start-label {
+     font-size: 0.66rem;
+     letter-spacing: 0.17em;
+   }
+   
+   .wedding-start-time strong {
+     font-size: clamp(2.4rem, 13vw, 3.4rem);
+   }
+
   /* Программа мероприятия */
 
   .timeline::before {
@@ -162,6 +175,14 @@
   .countdown-card strong {
     font-size: 2.1rem;
   }
+
+   .wedding-start-time {
+     margin-bottom: 26px;
+   }
+
+   .wedding-start-time strong {
+     font-size: 2.7rem;
+   }
 
   /* Местоположение */
 
