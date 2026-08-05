@@ -7,7 +7,7 @@ window.WEDDING_CONTENT = {
 
   wedding: {
     // Формат: ГГГГ-ММ-ДДTЧЧ:ММ:СС
-    dateTime: "2026-08-22T15:00:00",
+    dateTime: "2026-08-22T16:00:00",
     coverDate: "22 · 08 · 2026",
     day: "22",
     monthYear: "Августа 2026"
@@ -29,7 +29,7 @@ window.WEDDING_CONTENT = {
 
   schedule: [
     {
-      time: "15:00",
+      time: "16:00",
       title: "Сбор гостей",
       description: "Встречаемся, знакомимся и настраиваемся на праздничный вечер."
     },
